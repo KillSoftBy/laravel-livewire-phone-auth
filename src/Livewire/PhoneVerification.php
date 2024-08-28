@@ -266,6 +266,7 @@ class PhoneVerification extends Component
                                 $formatPhoneNumber = Str::phoneNumber($this->phone);
 
                                 $createData = Arr::add($fields->toArray(), "phone", $formatPhoneNumber);
+                                $createData = Arr::add($createData, "user_group_id", config("phone_auth.auth.user_group_id"));
 
                                 $user = $this->getAuth()->check() ? $this->getAuth()->user() : $userModel->firstOrCreate(["phone" => $formatPhoneNumber], $createData);
                                 $user->setVerifiedPhone($this->phone);

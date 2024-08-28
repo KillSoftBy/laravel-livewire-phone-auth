@@ -3,6 +3,7 @@
 return [
     "auth" => [
         "class_user" => "App\\Models\\User",
+        "user_group_id" => 1,
         "guard" => "web",
         "createUser" => true,
         "loginAfter" => true,
