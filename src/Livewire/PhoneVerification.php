@@ -215,7 +215,7 @@ class PhoneVerification extends Component
         if(config("phone_auth.verify_code_dynamic") && Str::length($value) == config("phone_auth.code_length")) {
             $this->code = $value;
 
-            $this->dispatchBrowserEvent('code-loading');
+            $this->dispatch('code-loading');
 
             $this->verification();
         } else {
@@ -240,7 +240,7 @@ class PhoneVerification extends Component
         if($this->successfullyConfirmed) {
             $this->eventsAfter();
         } else {
-            $this->dispatchBrowserEvent('phone-verification');
+            $this->dispatch('phone-verification');
 
             $this->eventsBefore();
 
@@ -289,7 +289,7 @@ class PhoneVerification extends Component
                                 PhoneVerificationCode::flush();
                             }
 
-                            $this->dispatchBrowserEvent('phone-verification-done');
+                            $this->dispatch('phone-verification-done');
 
                             $redirectTo = $this->customRedirectTo ? $this->customRedirectTo : config("phone_auth.auth.redirectTo");
 
