@@ -315,7 +315,7 @@ class PhoneVerification extends Component
      */
     protected function eventsSendCode() {
         if(!$this->stopEvents && config("phone_auth.emitSendCode")) {
-            $this->emit(config("phone_auth.emitSendCode"), [
+            $this->dispatch(config("phone_auth.emitSendCode"), [
                 "phone" => Str::phoneNumber($this->phone),
                 "values" => $this->fieldsValues,
             ]);
@@ -327,7 +327,7 @@ class PhoneVerification extends Component
      */
     protected function eventsBefore() {
         if(!$this->stopEvents && config("phone_auth.emitBefore")) {
-            $this->emit(config("phone_auth.emitBefore"), [
+            $this->dispatch(config("phone_auth.emitBefore"), [
                 "success" => $this->successfullyConfirmed,
                 "phone" => Str::phoneNumber($this->phone),
                 "values" => $this->fieldsValues,
@@ -340,7 +340,7 @@ class PhoneVerification extends Component
      */
     protected function eventsAfter() {
         if(!$this->stopEvents && config("phone_auth.emitAfter")) {
-            $this->emit(config("phone_auth.emitAfter"), [
+            $this->dispatch(config("phone_auth.emitAfter"), [
                 "success" => $this->successfullyConfirmed,
                 "phone" => Str::phoneNumber($this->phone),
                 "values" => $this->fieldsValues,
