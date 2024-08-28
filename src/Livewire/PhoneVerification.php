@@ -318,7 +318,7 @@ class PhoneVerification extends Component
             $this->dispatch(config("phone_auth.emitSendCode"), [
                 "phone" => Str::phoneNumber($this->phone),
                 "values" => $this->fieldsValues,
-            ]);
+            ])->to(app(config('phone_auth.emitAfterTo')));
         }
     }
 
@@ -331,7 +331,7 @@ class PhoneVerification extends Component
                 "success" => $this->successfullyConfirmed,
                 "phone" => Str::phoneNumber($this->phone),
                 "values" => $this->fieldsValues,
-            ]);
+            ])->to(app(config('phone_auth.emitAfterTo')));
         }
     }
 
@@ -344,7 +344,7 @@ class PhoneVerification extends Component
                 "success" => $this->successfullyConfirmed,
                 "phone" => Str::phoneNumber($this->phone),
                 "values" => $this->fieldsValues,
-            ]);
+            ])->to(app(config('phone_auth.emitAfterTo')));
         }
     }
 

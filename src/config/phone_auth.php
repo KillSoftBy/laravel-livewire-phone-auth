@@ -13,6 +13,7 @@ return [
     "emitSendCode" => false,
     "emitBefore" => false,
     "emitAfter" => false,
+    "emitAfterTo" => null, // Parent component
 
     "code_length" => 4,
     "code_digits_only" => false,
